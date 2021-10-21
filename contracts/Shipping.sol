@@ -65,8 +65,8 @@ contract Shipping {
     return "Unknown status";
   }
 
-  // Fonction de pourboire au livreur
-  function giveTipToDeliverer(address payable _deliverer) public payable {
-    _deliverer.transfer(msg.value);
+  // Fonction de pourboire au livreur d'un produit
+  function giveTipToDeliverer(uint _productId) public payable {
+    payable(products[_productId].deliverer).transfer(msg.value);
   }
 }
